@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cleanstuff</groupId>
+  <artifactId>cleanstuff</artifactId>
+  <version>0.0.1</version>
+  <name>cleanstuffname</name>
+  <description>cleanstuffdescription</description>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <!-- TO COMPILE AND PACKAGE JAR WITH OR WITHOUT DEPENDENCIES USE 
+        THE FOLLOWING TWO PLUGINS INTERCHANGEABLY AS ARE WRITTEN HERE. 
+        AND NEVER FORGET TO UPDATE THE VALUE OF THE ELEMENT mainClass 
+        WITHIN THE manifest OF THE USED PLUGIN-->
+      <!-- 
+        To compile and package WITHOUT dependencies use this plugin by 
+        running the following command from project's root dir: mvn clean package -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>cleanstuff.FixRunner</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <!-- -->
+      <!-- To compile and package WITH dependencies use this plugin by 
+        running the following command from project's root dir: mvn clean compile assembly:single -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.1.1</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>cleanstuff.FixRunner</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.5</version>
+    </dependency>
+  </dependencies>
+</project>
