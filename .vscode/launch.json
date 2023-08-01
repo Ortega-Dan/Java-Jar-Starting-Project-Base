@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Runner",
+            "request": "launch",
+            "mainClass": "org.danort.test.Runner"
+        }
+    ]
+}
