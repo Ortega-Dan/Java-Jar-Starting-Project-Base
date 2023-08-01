@@ -1,12 +1,41 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>cleanstuff</groupId>
   <artifactId>cleanstuff</artifactId>
   <version>0.0.1</version>
   <name>cleanstuffname</name>
   <description>cleanstuffdescription</description>
+  <dependencies>
+    <!-- dependencies -->
+
+    <!-- adding gson dependency -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+    </dependency>
+
+
+    <!-- junit 5 jupiter dependencies for testing -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.10.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.10.0</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -32,7 +61,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>cleanstuff.FixRunner</mainClass>
+              <mainClass>org.danort.test.Runner</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -47,7 +76,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>cleanstuff.FixRunner</mainClass>
+              <mainClass>org.danort.test.Runner</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
@@ -55,13 +84,12 @@
           </descriptorRefs>
         </configuration>
       </plugin>
+      <!-- test runner plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.1.2</version>
+      </plugin>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.13.0</version>
-    </dependency>
-  </dependencies>
 </project>
