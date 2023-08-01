@@ -47,11 +47,14 @@
       </plugin>
       <!-- TO COMPILE AND PACKAGE JAR WITH OR WITHOUT DEPENDENCIES USE 
         THE FOLLOWING TWO PLUGINS INTERCHANGEABLY AS ARE WRITTEN HERE. 
-        AND NEVER FORGET TO UPDATE THE VALUE OF THE ELEMENT mainClass 
+        AND DO NOT FORGET TO UPDATE THE VALUE OF THE ELEMENT mainClass 
         WITHIN THE manifest OF THE USED PLUGIN-->
+
       <!-- 
         To compile and package WITHOUT dependencies use this plugin by 
-        running the following command from project's root dir: mvn clean package -->
+        running the following command from project's root dir: 
+        mvn clean package
+      -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -67,8 +70,11 @@
         </configuration>
       </plugin>
       <!-- -->
-      <!-- To compile and package WITH dependencies use this plugin by 
-        running the following command from project's root dir: mvn clean compile assembly:single -->
+      <!-- 
+        To compile and package WITH dependencies use this plugin by 
+        running the following command from project's root dir: 
+        mvn clean compile test assembly:single
+      -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
